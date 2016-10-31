@@ -1,5 +1,9 @@
 $(document).ready(function() {
-    var array = [];
+    var array = [],
+        employees = [],
+        totalSalary = 0,
+        monthlyPayroll = 0;
+
     $('#employeeinfo').on('submit', function(event) {
       event.preventDefault();
 
@@ -16,25 +20,56 @@ $(document).ready(function() {
         values[element.name] = element.value;
       });
 
-      console.log(values);
+      employees.push(values);
 
       // clear out inputs
       $('#employeeinfo').find('input[type=text], input[type=number]').val('');
 
       // append to DOM
-      appendDom(values);
+      updateDOM(employees)
     });
 
-    function appendDom(empInfo) {
+    $('#container').on('click', '.delete', function (event) {
+      var $row = $(this).closest('tr'),
+          indexToRemove = $row.data('index');
+
+      employees.splice(indexToRemove, 1)
+
+      updateDOM(employees);
+    });
+
+    function updateDOM(employees) {
+      drawTable(employees);
+      changeTotal(employees);
+    }
+
+    function drawTable(employees) {
+      $('#container').empty();
+      for (var i = 0; i < employees.length; i++) {
+        appendDom(employees[i], i);
+      }
+    }
+
+    function appendDom(empInfo, index) {
       $('#container').append('<tr></tr>');
       var $el = $('#container').children().last();
 
+      $el.data('index', index);
       $el.append('<td>' + empInfo.employeeFirstName + '</td>');
       $el.append('<td>' + empInfo.employeeLastName + '</td>');
       $el.append('<td>' + empInfo.idNumber + '</td>');
       $el.append('<td>' + empInfo.jobTitle + '</td>');
       $el.append('<td>' + empInfo.annualSalary + '</td>');
+      $el.append('<td><button class="delete">Delete</button></td>');
     }
 
+    function changeTotal(employees) {
+      totalSalary = 0;
+      for (var i = 0; i < employees.length; i++) {
+        totalSalary += parseFloat(employees[i].annualSalary);
+      }
 
+      monthlyPayroll = totalSalary / 12;
+      $('#monthlyPayroll').text(monthlyPayroll.toLocaleString('en-US', {style: 'currency', currency: 'USD'}));;
+    }
 });
