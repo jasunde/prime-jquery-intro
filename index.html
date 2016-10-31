@@ -18,19 +18,33 @@
 
 
         <label for="idNumber">ID Number:</label>
-        <input type="text" id="idNumber" name="idNumber" />
+        <input type="number" id="idNumber" name="idNumber" />
 
         <label for="jobTitle">Job Title:</label>
         <input type="text" id="jobTitle" name="jobTitle" />
 
         <label for="annualSalary">Annual Salary:</label>
-        <input type="text" id="annualSalary" name="annualSalary" />
-        
+        <input type="number" id="annualSalary" name="annualSalary" />
+
         <input type="submit" value="Submit Employee" />
       </form>
     </div>
-    <div id="container">
-      <h2>Container</h2>
+    <div>
+      <h2>Monthly Salary Expenditure: <span id="monthlyPayroll">$0.00</span></h2>
+
+      <h2>Employee Information</h2>
+      <table>
+        <tbody id="container">
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>ID Number</th>
+            <th>Job Title</th>
+            <th>Annual Salary</th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </body>
 </html>
