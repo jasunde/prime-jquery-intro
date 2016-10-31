@@ -1,28 +1,28 @@
-# jQuery Intro Lectures
+# Weekend Challenge 1
+For your weekend challenge, you will need to create an application that records employee data, including their salary. We also want to add the salaries up so we know how much we’re spending each month. Start with the forms folder in the github repo provided.
 
-The lecture itself is broken into four parts.
+## Setup
+You may begin from the code in the forms folder. This contains the input fields and the code to process the input into an object.
 
-1. Introduction
-  1. `JQ`: What is jQuery? Libraries, minified files, etc.
-2. Selectors
-  2. `JQ-SEL`: DOM review, selecting elements with jQuery, basic usage, DOM traversal, getter/setter with .text()
-3. Events
-  3. `JQ-EVT`: Event handling, use of .on(), appending, add/remove class
-4. Forms
-  4. `JQ-FRM`: Form submission event handling and appending to the DOM, .data()
+You will need to download and source in the jQuery library!
 
-# In this Repo
+## Base Functionality
+The application should first have an input form that collects:
+- The Employee's First and Last name
+- The Employee's ID Number
+- The Employee's Job Title
+- The Employee's Salary (Yearly)
 
-This codebase has three parts that are used in the introduction to jQuery lecture. jQuery v1.12.3 and v3.0.0 are included. 3.0 is used by default.
+The form should have a submit button that:
+- clears out the form and
+- stores the submitted information.
 
-## Selectors: `JQ-SEL`
+Then, that information should be appended to the DOM so the user of the application can see the information they just entered.
 
-The selectors dir contains code for introducing jQuery, DOM/DOM loading, etc. It also contains examples of the various kinds of selectors to cover. Comment/uncomment the lines to demonstrate their usage.
+Finally, your logic should calculate all of the employee salaries and report back what the monthly cost of salaries is.
 
-## Events: `JQ-EVT`
+## Hard Mode
+Create a delete button that removes an employee from the DOM. Note that in hard mode, it need not remove that Employee's salary from the reported total.
 
-The events dir contains an example of an app that responds to various events and demonstrates appending to the DOM. Used for supporting the discussion of events, event handling, .on(), click and keyboard events, remove(), addClass(), etc.
-
-## Forms: `JQ-FRM`
-
-The forms dir contains supporting code to covering HTML forms and input types as well as how to handle forms with jQuery. This contains sample code for handling the form and appending the submitted data back to the DOM.
+## Pro Mode
+Once the employee is deleted, also update the total salaries to discount the removed employee's salary. This will require that the logic knows which element was removed. You will need to stretch yourself for this one. I also recommend that you look into jQuery's .data() function to help complete this. Note, you will need to do something both when the employee is added and when they are deleted to make your application 'smart'.
