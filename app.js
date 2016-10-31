@@ -19,17 +19,21 @@ $(document).ready(function() {
       console.log(values);
 
       // clear out inputs
-      $('#employeeinfo').find('input[type=text]').val('');
+      $('#employeeinfo').find('input[type=text], input[type=number]').val('');
 
       // append to DOM
       appendDom(values);
     });
 
     function appendDom(empInfo) {
-      $('#container').append('<div class="person"></div>');
+      $('#container').append('<tr></tr>');
       var $el = $('#container').children().last();
 
-      $el.append('<p>' + empInfo.employeefirstname + ' ' + empInfo.employeelastname + '</p>');
+      $el.append('<td>' + empInfo.employeeFirstName + '</td>');
+      $el.append('<td>' + empInfo.employeeLastName + '</td>');
+      $el.append('<td>' + empInfo.idNumber + '</td>');
+      $el.append('<td>' + empInfo.jobTitle + '</td>');
+      $el.append('<td>' + empInfo.annualSalary + '</td>');
     }
 
 
